@@ -5,7 +5,7 @@ Yet another automatic/semi-automatic/manual danmaku and video file downloader of
 
 Integrated with most of the "black science". Good to bypass some copyright and geolocation restrictions.
 
-6 independent ways to parse source(s)! Now with BilibiliPr!
+7 independent ways to parse source(s)! Now with BilibiliPr and you-get! Even fake IP!
 
 Auto concat and convert to MP4 (or FLV, even nothing, if not possible) file(s), direct integrate with Mukioplayer-Py-Mac(https://github.com/cnbeining/Mukioplayer-Py-Mac  , the Flash danmaku playing solution) and ABPlayer-HTML5-Mac(https://github.com/cnbeining/ABPlayerHTML5-Py--nix  , the HTML5 playing solution, preferred). 
 
@@ -35,7 +35,7 @@ python biligrab.py
 
 Or command line mode:
 
-    python biligrab.py (-h) (-a) (-p) (-s) (-c) (-d) (-v) (-l) (-e) (-b) (-m) (-n) (-u) (-t) (-q) (-r)
+    python biligrab.py (-h) (-a) (-p) (-s) (-c) (-d) (-v) (-l) (-e) (-b) (-m) (-n) (-u) (-t) (-q) (-r) (-g)
     
     -h: Default: None
         Print this usage file.
@@ -80,6 +80,8 @@ Or command line mode:
     5: Use BilibiliPr.
        Good to fight with some copyright restriction that BilibiliPr can fix.
        Not always working though.
+    6: Use You-get (https://github.com/soimort/you-get).
+       You need a you-get callable directly like "you-get -u blahblah".
        
     -c: Default: ./bilicookies
     The path of cookies.
@@ -147,6 +149,13 @@ Or command line mode:
     Select video quality.
     Only works with Source 0 or 1.
     Range: 0~4, higher for better quality.
+    
+    -g: Default: 6
+    Threads for downloading every part.
+    Works with aria2 and axel.
+    
+    -i: Default: None
+    Fake IP address.
 
 Requirement
 -------
@@ -154,7 +163,8 @@ Requirement
 - curl + None/aria2c/wget/axel
 - ffmpeg
 - mediainfo/ffprobe(for danmaku2ass)
-- Python 3.x(only for danmaku2ass's python3 mode)
+- Python 3.x(for danmaku2ass's python3 mode, or you-get)
+- you-get(if you use mode 6, please refer to https://github.com/soimort/you-get .)
 
 Author
 -----
@@ -170,7 +180,7 @@ This program is provided **as is**, with absolutely no warranty.
 
 Contributing
 ------------
-Any contribution is welcome. 
+Any contribution are welcome. 
 
 For issues, it would be better to include the log output, which can be enabled by ```-l```. 
 
@@ -182,6 +192,14 @@ Any donation is welcome as well. Please get in touch with me: cnbeining[at]gmail
 
 History
 ----
+0.98.85: Rewrite url get function, also add IP faking.
+
+0.98.81: Update as API domain update. Thanks for @m13253 's help.
+
+0.98.8: Add download via you-get; Fix traceback printing.
+
+0.98.72: Add thread control, as in #15 .
+
 0.98.7: Add some quality selection.
 
 0.98.6: Add BilibiliPr's API.
