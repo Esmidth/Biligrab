@@ -3,38 +3,35 @@ Biligrab
 
 Yet another automatic/semi-automatic/manual danmaku and video file downloader of Bilibili.
 
-Integrated with most of the "black science". Good to bypass some copyright and geolocation restrictions.
+This grabber is integrated with most of the "black techs". Good to bypass some copyright and
+geolocation restrictions:
 
-7 independent ways to parse source(s)! Now with BilibiliPr and you-get! Even fake IP!
-
-Auto concat and convert to MP4 (or FLV, even nothing, if not possible) file(s), direct integrate with Mukioplayer-Py-Mac(https://github.com/cnbeining/Mukioplayer-Py-Mac  , the Flash danmaku playing solution) and ABPlayer-HTML5-Mac(https://github.com/cnbeining/ABPlayerHTML5-Py--nix  , the HTML5 playing solution, preferred). 
-
-Interact and command line mode for different situations. ALso support slient mode.
-
-Able to process single or multiple videos with easy grammar, or reading mylist.
-
-Intergrated with Danmaku2ass(https://github.com/m13253/danmaku2ass, GPL v2) by m13253, able to convert danmaku to ASS subtitle. Both py2 and master branch avalable for better handling danmaku.
-
-Able to export danmaku only.
-
-Or, if you prefer, Biligrab can export a M3U file, with which you can play danmaku without waiting with players like MPlayer, MPC or VLC, etc. 
-
-Comes with a built-in multi-part download, useful to reduce slow overheads.
+* 7 independent ways to parse source(s)! Now with BilibiliPr and you-get! And fake IP!
+* Auto concatenates and converts to MP4 (or FLV, even nothing, if not possible) file(s) via direct integration with [Mukioplayer-Py-Mac](https://github.com/cnbeining/Mukioplayer-Py-Mac) (the Flash danmaku playing solution) and [ABPlayer-HTML5-Mac](https://github.com/cnbeining/ABPlayerHTML5-Py--nix) (the HTML5 playing solution, preferred). 
+* Interactive and command line mode for different use-cases. And also silent mode.
+* Process single or multiple videos with ease. Now you can use Bilibili *mylist*s.
+* Convert danmaku to ASS subtitles with ease using m13253's [Danmaku2ass](https://github.com/m13253/danmaku2ass) (GPLv2).
+  Both py2 and master (py3) branches available for better danmaku handling.
+* Damaku-only exports
+* M3U exports -- play danmaku without waiting with players like MPlayer, MPC or VLC, etc. 
+* Built-in multi-part download, useful to reduce slow overheads.
 
 Usage
-------
-If you have a Bilibili account, set the cookie with https://github.com/dantmnf/biliupload/blob/master/getcookie.py  will help you to download some of the restricted videos. Also you can do that by hand.
+-----
 
-The file should looks like:
+If you have a Bilibili account, setting the cookie with [dantmnf/biliupload/getcookie.py](https://github.com/dantmnf/biliupload/blob/master/getcookie.py) will help you to download some of the restricted videos. You can do this by hand too.
+
+The file should look like:
 
     DedeUserID=123456;DedeUserID__ckMd5=****************;SESSDATA=*******************
 
-Interactive mode (Note some of the functions are not avalable via this mode):
+Interactive mode (Note some functionalities are not available in this mode):
 
-python biligrab.py
+    $ python2 biligrab.py
 
 Or command line mode:
 
+    $ python2 biligrab.py -h
     python biligrab.py (-h) (-a) (-p) (-s) (-c) (-d) (-v) (-l) (-e) (-b) (-m) (-n) (-u) (-t) (-q) (-r) (-g)
     
     -h: Default: None
@@ -42,7 +39,7 @@ Or command line mode:
         
     -a: Default: None
         The av number.
-        If not set, Biligrab will use the falloff interact mode.
+        If not set, Biligrab will use the fallback interactive mode.
         Support "~", "," and mix use.
         Examples:
             Input        Output
@@ -54,29 +51,29 @@ Or command line mode:
     -p: Default: 0
         The part number.
         Able to use the same syntax as "-a".
-        If set to 0, Biligrab will download all the avalable parts in the video.
+        If set to 0, Biligrab will download all the available parts in the video.
         
     -s: Default: 0
     Source to download.
     0: The original API source, can be Letv backup,
-       and can failed if the original video is not avalable(e.g., deleted)
+       and can fail if the original video is not available(e.g., deleted)
     1: The CDN API source, "oversea accelerate".
        Can be MINICDN backup in Mainland China or oversea.
-       Good to bypass some bangumi's limit.
+       Good to bypass some bangumi's restrictions.
     2: Force to use the original source.
-       Use Flvcd to parase the video, but would fail if
+       Use Flvcd to parse the video, but would fail if
        1) The original source DNE, e.g., some old videos
        2) The original source is Letvcloud itself.
-       3) Other unknown reason(s) that stops Flvcd from parasing the video.
+       3) Other unknown reason(s) that stops Flvcd from parsing the video.
     For any video that failed to parse, Biligrab will try to use Flvcd.
     (Mainly for oversea users regarding to copyright-restricted bangumies.)
     If the API is blocked, Biligrab would fake the UA.
     3: (Not stable) Use the HTML5 API.
        This works for downloading some cached Letvcloud videos, but is slow, and would fail for no reason sometimes.
-       Will retry if unavalable.
+       Will retry if unavailable.
     4: Use Flvcd.
        Good to fight with oversea and copyright restriction, but not working with iQiyi.
-       May retrive better quality video, especially for Youku.
+       May retrieve better quality video, especially for Youku.
     5: Use BilibiliPr.
        Good to fight with some copyright restriction that BilibiliPr can fix.
        Not always working though.
@@ -90,15 +87,15 @@ Or command line mode:
     -d: Default: None
     Set the desired download software.
     Biligrab supports aria2c(16 threads), axel(20 threads), wget and curl by far.
-    If not set, Biligrab will detect an avalable one;
-    If none of those is avalable, Biligrab will quit.
+    If not set, Biligrab will detect an available one;
+    If none of those is available, Biligrab will quit.
     For more software support, please open an issue at https://github.com/cnbeining/Biligrab/issues/
     
     -v: Default:None
     Set the desired concatenate software.
     Biligrab supports ffmpeg by far.
-    If not set, Biligrab will detect an avalable one;
-    If none of those is avalable, Biligrab will quit.
+    If not set, Biligrab will detect an available one;
+    If none of those is available, Biligrab will quit.
     For more software support, please open an issue at https://github.com/cnbeining/Biligrab/issues/
     Make sure you include a *working* command line example of this software!
     
@@ -120,8 +117,8 @@ Or command line mode:
     -b: Default: None
     Set the probe software.
     Biligrab supports Mediainfo and FFprobe.
-    If not set, Biligrab will detect an avalable one;
-    If none of those is avalable, Biligrab will quit.
+    If not set, Biligrab will detect an available one;
+    If none of those is available, Biligrab will quit.
     For more software support, please open an issue at https://github.com/cnbeining/Biligrab/issues/
     Make sure you include a *working* command line example of this software!
     
@@ -129,7 +126,7 @@ Or command line mode:
     Only download the danmaku.
     
     -n: Default: 0
-    Slient Mode.
+    Silent Mode.
     Biligrab will not ask any question.
     
     -u: Default: 0
@@ -157,21 +154,23 @@ Or command line mode:
     -i: Default: None
     Fake IP address.
 
-Requirement
--------
+Requirements
+------------
+
 - Python 2.7
 - curl + None/aria2c/wget/axel
 - ffmpeg
-- mediainfo/ffprobe(for danmaku2ass)
-- Python 3.x(for danmaku2ass's python3 mode, or you-get)
-- you-get(if you use mode 6, please refer to https://github.com/soimort/you-get .)
+- mediainfo/ffprobe (for danmaku2ass)
+- Python 3.x (for danmaku2ass's python3 mode, or you-get)
+- you-get (See https://github.com/soimort/you-get for mode 6 info.)
 
 Author
 -----
 Beining, http://www.cnbeining.com/
 
 License
------
+-------
+
 MIT license.
 
 The Danmaku2ass(master) and Danmaku2ass(py2) part belongs to @m13253, GPLv3 license. Used under the authorization of the original author.
@@ -180,18 +179,24 @@ This program is provided **as is**, with absolutely no warranty.
 
 Contributing
 ------------
+
 Any contribution are welcome. 
 
-For issues, it would be better to include the log output, which can be enabled by ```-l```. 
+For issues, it would be better to include the log output, which can be enabled by `-l`. 
 
-MAKE SURE YOU DELETE ANY SENSIVE INFORMATION THAT YOU DO NOT WANT TO SHARE PUBLICLY(E.G., IP ADDRESS, USERNAME, ETC.) BEFORE YOU POST ANYTHING!
+MAKE SURE YOU DELETE ANY SENSITIVE INFORMATION THAT YOU DO NOT WANT TO SHARE PUBLICLY (E.G., IP ADDRESS, USERNAME, ETC.) BEFORE YOU POST ANYTHING!
 
-*You can still send me the info privately via my email. PGP public key avalable at http://www.cnbeining.com/about/*
+*You can still send me the info privately via my email. PGP public key available at http://www.cnbeining.com/about/*
 
 Any donation is welcome as well. Please get in touch with me: cnbeining[at]gmail.com .
 
-History
-----
+Release History
+---------------
+
+V0.98.91: Change API key set.
+
+0.98.86: Emergency update: Fake UA to download.
+
 0.98.85: Rewrite url get function, also add IP faking.
 
 0.98.81: Update as API domain update. Thanks for @m13253 's help.
@@ -228,11 +233,11 @@ History
 
 0.98: Fix error with special characters in filename; Add export to M3U file to use players like MPlayer, VLC, etc.; Rewrite video URL API logic; Fix error with Danmaku2ASS(main); Error handling with ffprobe
 
-0.97.9: Rewrite URL retrive logic; Divide URL retrive to functions; Change to ```.format()``` style; Add HTML5 API; Directly use Flvcd; Beautify ERROR logging.
+0.97.9: Rewrite URL retrieve logic; Divide URL retrieve to functions; Change to ```.format()``` style; Add HTML5 API; Directly use Flvcd; Beautify ERROR logging.
 
 0.97.5: Add (auto) download all the pages; Auto PEP-8.
 
-0.97: Slient mode; Multiple video mode; Functions beautify; More error handling.
+0.97: Silent mode; Multiple video mode; Functions beautify; More error handling.
 
 0.96.2: Merge pull request #6, #7: Optimize Danmaku2ASS parameters and exception handling, thanks to @m13253's help; Fix error when cookie does not exist, thanks to @m13253's report.
 
@@ -244,7 +249,7 @@ History
 
 0.94: Add faking UA to bypass blocking; Add auto-generate UA; Rewrite API logic.
 
-0.93: Fix error when handling filenames containing ```/\&```, thanks to @solimot 's report; Add log mode, which can be enabled by ```-l 1 ```; Clean multiple headers; Rearrange global varibles.
+0.93: Fix error when handling filenames containing ```/\&```, thanks to @solimot 's report; Add log mode, which can be enabled by ```-l 1 ```; Clean multiple headers; Rearrange global variables.
 
 0.92: Fix wrongly exit when downloading multiple parts.
 
@@ -252,7 +257,7 @@ History
 
 0.90: Fix if cannot get download URL for some reason(geo location, or API server error), try to use Flvcd to download video. 
 
-0.89: Fix #4, force declare the varible, and set the path if not assigned. 
+0.89: Fix #4, force declare the variable, and set the path if not assigned. 
 
 0.88: Fix #3, 2 typos.
 
